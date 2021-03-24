@@ -1,0 +1,6 @@
+{
+	"name": "ayla-demo-ir",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

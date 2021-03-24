@@ -1,0 +1,32 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Flatten1"
+				}
+			],
+			"script": "source(output(\n\t\tSamples as (GlobalId as string, Date as string, LastModified as string, Latitude as double, Longitude as double, Altitude as double, Range as double, Easting as double, Northing as double, Zone as string, SatelliteCount as string, Installation as (Id as string, Name as string), SerialNumber as string, Traces as (Name as string, Value as double)[], Tags as string[], FreqDistribution as (CumulativePercent as double, PercentInBin as double, ParticleSize as double, AreaInBin as string, MassInBin as string, CumulativeArea as string, CumulativeMass as string)[])[]\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tlimit: 100,\n\tdocumentForm: 'documentPerLine') ~> source1\nsource1 foldDown(unroll(Samples.FreqDistribution),\n\tmapColumn(\n\t\tSamples\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Flatten1\nFlatten1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tpartitionFileNames:['output.parquet'],\n\ttruncate: true,\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

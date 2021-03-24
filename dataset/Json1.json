@@ -1,0 +1,126 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "02111.json",
+				"folderPath": "SampleJson",
+				"container": "container-ayla-demo"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"Samples": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"GlobalId": {
+								"type": "string"
+							},
+							"Date": {
+								"type": "string"
+							},
+							"LastModified": {
+								"type": "string"
+							},
+							"Latitude": {
+								"type": "number"
+							},
+							"Longitude": {
+								"type": "number"
+							},
+							"Altitude": {
+								"type": "number"
+							},
+							"Range": {
+								"type": "number"
+							},
+							"Easting": {
+								"type": "number"
+							},
+							"Northing": {
+								"type": "number"
+							},
+							"Zone": {
+								"type": "integer"
+							},
+							"SatelliteCount": {
+								"type": "integer"
+							},
+							"Installation": {
+								"type": "object",
+								"properties": {
+									"Id": {
+										"type": "string"
+									},
+									"Name": {
+										"type": "string"
+									}
+								}
+							},
+							"SerialNumber": {
+								"type": "null"
+							},
+							"Traces": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"Name": {
+											"type": "string"
+										},
+										"Value": {
+											"type": "number"
+										}
+									}
+								}
+							},
+							"Tags": {
+								"type": "array"
+							},
+							"FreqDistribution": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"CumulativePercent": {
+											"type": "number"
+										},
+										"PercentInBin": {
+											"type": "number"
+										},
+										"ParticleSize": {
+											"type": "number"
+										},
+										"AreaInBin": {
+											"type": "null"
+										},
+										"MassInBin": {
+											"type": "null"
+										},
+										"CumulativeArea": {
+											"type": "null"
+										},
+										"CumulativeMass": {
+											"type": "null"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,9 @@
+{
+	"name": "adf-ayla-demo",
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a97a8a58-cdf6-4a3e-b273-417473b5675f",
+		"tenantId": "ed2bd579-73fa-4c35-9cf1-2ef7ac7c310d"
+	}
+}

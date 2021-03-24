@@ -1,0 +1,23 @@
+{
+	"name": "ls_AzureSqlDatabase",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sql-ayla-demo.database.windows.net;Initial Catalog=sqldb-ayla-demo;User ID=sql-server-admin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "secret-sql-db"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ayla-azure-ir",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

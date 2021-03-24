@@ -1,0 +1,12 @@
+{
+	"name": "ls_AzureKeyVault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Azure key vault",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kv-ayla-demo.vault.azure.net/"
+		}
+	}
+}
